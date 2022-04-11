@@ -6,10 +6,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'EOL uchile',
+  title: 'Docs-eol uchile',
   tagline: 'Oficina de Educación Online',
-  url: 'https://oficinaeol.uchile.cl/',
-  baseUrl: '/docs/',
+  url: 'https://docs.oficinaeol.uchile.cl/',
+  baseUrl: '/',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -101,7 +102,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/eol-uchile',
               },
             ],
           },
