@@ -1,11 +1,25 @@
-FROM node:lts
+FROM node:lts as dev
 
 WORKDIR /app/webdocs
-
-EXPOSE 3000
 
 COPY ./webdocs /app/webdocs
 
 RUN npm install
 
+EXPOSE 3000
+
 CMD ["npm", "start"]
+
+# Production layers
+
+FROM dev as prod
+
+RUN npm run build
+
+FROM node:lts as static
+
+COPY ./webdocs /app/webdocs
+
+EXPOSE 3000
+
+CMD ["npm", "run", "serve"]
