@@ -18,7 +18,7 @@ RUN npm run build
 
 FROM node:lts as static
 
-COPY ./webdocs/build /app/webdocs/build
+COPY ./webdocs /app/webdocs
 
 EXPOSE 3000
 
