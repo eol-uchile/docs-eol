@@ -1,19 +1,13 @@
-version: "3"
+version: "3.7"
 
 services:
   docusaurus:
     build:
       context: .
-      target: dev
+      target: development
     command: npm start
     ports:
       - 3000:3000
     volumes:
-      - ./webdocs/blog:/app/webdocs/blog
-      - ./webdocs/docs:/app/webdocs/docs
-      - ./webdocs/src:/app/webdocs/src
-      - ./webdocs/babel.config.js:/app/webdocs/babel.config.js
-      - ./webdocs/static:/app/webdocs/static
-      - ./webdocs/sidebars.js:/app/webdocs/sidebars.js
-      - ./webdocs/docusaurus.config.js:/app/webdocs/docusaurus.config.js
-    working_dir: /app/webdocs
+      - ./:/app
+      - /app/node_modules
