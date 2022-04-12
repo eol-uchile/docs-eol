@@ -1,25 +1,37 @@
-FROM node:lts as dev
+FROM node:lts as base
 
-WORKDIR /app/webdocs
+# Reduce npm log spam and colour during install within Docker
+ENV NPM_CONFIG_LOGLEVEL=warn
+ENV NPM_CONFIG_COLOR=false
 
-COPY ./webdocs /app/webdocs
+WORKDIR /app
 
+# Copy the source code over
+COPY --chown=node:node . /app/
+
+## Development #################################################################
+FROM base as development
+WORKDIR /app
+# Install (not ci) with dependencies, and for Linux vs. Linux Musl (which we use for -alpine)
 RUN npm install
-
+# Switch to the node user vs. root
+USER node
+# Expose port 3000
 EXPOSE 3000
-
+# Start the app in debug mode so we can attach the debugger
 CMD ["npm", "start"]
 
-# Production layers
 
-FROM dev as prod
+## Production ##################################################################
+FROM base as production
 
+WORKDIR /app
+
+COPY --chown=node:node --from=development /app/node_modules /app/node_modules
+
+# Build the Docusaurus app
 RUN npm run build
 
-FROM node:lts as static
-
-COPY ./webdocs /app/webdocs
-
-EXPOSE 3000
+COPY . /app
 
 CMD ["npm", "run", "serve"]

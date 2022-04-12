@@ -4,11 +4,12 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Fácil de usar',
+    title: 'Easy to Use',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus fue diseñado desde cero para instalarse fácilmente y usarse para poner en funcionamiento su sitio web rápidamente.
+        Docusaurus was designed from the ground up to be easily installed and
+        used to get your website up and running quickly.
       </>
     ),
   },

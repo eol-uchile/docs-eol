@@ -44,7 +44,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Documentación EOL Test',
+        title: 'Docs-eol uchile',
         logo: {
           alt: 'Logo EOL',
           src: 'img/EOL.png',
@@ -107,7 +107,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} EOL, Construido con Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Oficina de Educación Online, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
