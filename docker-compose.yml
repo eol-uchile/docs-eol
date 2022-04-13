@@ -1,13 +1,13 @@
 version: "3.7"
 
 services:
-  docusaurus:
+  docs-eol:
     build:
       context: .
       target: development
     command: npm start
     ports:
-      - 3000:3000
+      - 3005:3000
     volumes:
       - ./:/app
       - /app/node_modules
