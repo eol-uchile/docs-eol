@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Docs-eol uchile',
   tagline: 'Oficina de Educación Online',
-  url: 'https://docusaurus.io',
+  url: 'https://docs.oficinaeol.uchile.cl',
   baseUrl: '/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
