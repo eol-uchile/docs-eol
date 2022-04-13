@@ -32,6 +32,8 @@ COPY --chown=node:node --from=development /app/node_modules /app/node_modules
 # Build the Docusaurus app
 RUN npm run build
 
-COPY . /app
-
-CMD ["npm", "run", "serve"]
+FROM nginx:stable-alpine as static
+COPY --from=production /app/build /usr/share/nginx/html
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 3000
+CMD ["nginx","-g","daemon off;"]
