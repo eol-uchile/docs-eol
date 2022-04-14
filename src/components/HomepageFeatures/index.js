@@ -4,35 +4,41 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Educación Online para Pregrado y Postgrado',
+    Svg: require('@site/static/img/services_1_1.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        La Oficina EOL entrega capacitación y acompañamiento a los curso de Pre y Post grado.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Educación Continua',
+    Svg: require('@site/static/img/services_1_2.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        La oficina EOL entrega asesoría y soporte de plataforma para las unidades académicas en la ejecución de sus cursos.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Proyectos de apoyo a la docencia',
+    Svg: require('@site/static/img/services_1_3.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        La oficina EOL trabaja proyectos conjuntos con entidades educativas y pone a disposición la plataforma y asesora en la creación de cursos.
       </>
     ),
   },
+  // {
+  //   title: 'Cursos MOOC',
+  //   Svg: require('@site/static/img/services_1_4.svg').default,
+  //   description: (
+  //     <>
+  //       La Oficina EOL entrega soporte administrativo y técnico a UAbierta, plataforma de cursos abiertos y en línea de la Universidad de Chile.
+  //     </>
+  //   ),
+  // },
 ];
 
 function Feature({Svg, title, description}) {
@@ -53,6 +59,9 @@ export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
+        <div className="text--center">
+          <h2>Servicios Ofrecidos</h2>
+        </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

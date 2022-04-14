@@ -6,14 +6,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Docs-eol uchile',
+  title: 'Oficina de Educación Online',
   tagline: 'Oficina de Educación Online',
   url: 'https://docs.oficinaeol.uchile.cl',
   baseUrl: '/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
   organizationName: 'eol-uchile', // Usually your GitHub org/user name.
   projectName: 'docs-eol', // Usually your repo name.
 
@@ -44,10 +44,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Docs-eol uchile',
+        title: '',
         logo: {
           alt: 'Logo EOL',
-          src: 'img/EOL.png',
+          src: 'img/logo-eol.svg',
         },
         items: [
           {
@@ -56,19 +56,25 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/eol-uchile',
-            label: 'GitHub',
+            href: 'https://oficinaeol.uchile.cl/home',
+            label: 'Oficina EOL',
             position: 'right',
           },
         ],
       },
       footer: {
         style: 'dark',
+        logo: {
+          alt: 'Facebook Open Source Logo',
+          src: 'img/logo-eol-white.png',
+          width: 160,
+          height: 80,
+        },
         links: [
           {
-            title: 'Docs',
+            title: 'DOCUMENTACIÓN',
             items: [
               {
                 label: 'Tutorial',
@@ -77,37 +83,57 @@ const config = {
             ],
           },
           {
-            title: 'Community',
+            title: 'PLATAFORMAS',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Educación Online (EOL)',
+                href: 'https://eol.uchile.cl/',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'CMM Edu Formación',
+                href: 'https://cmmeduformacion.uchile.cl/',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: 'UAbierta',
+                href: 'https://uabierta.uchile.cl/',
+              },
+              {
+                label: 'Eduonline',
+                href: 'https://eduonline.ing.uchile.cl/',
+              },
+              {
+                label: 'Virtual LabX',
+                href: 'https://virtual-labx.cl/',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'CONTACTO',
             items: [
+              // {
+              //   label: 'Blog',
+              //   to: '/blog',
+              // },
               {
-                label: 'Blog',
-                to: '/blog',
+                html: `
+                <a href="https://goo.gl/maps/dBy3bJxzYLDiHgqf7" target="_blank" rel="noreferrer noopener">
+                  <img src="img/map.png" alt="Maps" width="25" height="25" />  Diagonal Paraguay 265, Torre 15, Oficina 1004, Santiago, Chile.
+                </a>
+              `,
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/eol-uchile',
+                // label: 'eol-ayuda@uchile.cl',
+                html: `
+                <a href="mailto:eol-ayuda@uchile.cl" target="_blank" rel="noreferrer noopener">
+                  <img src="img/correo-electronico.png" alt="Correo Electronico" width="25" height="25" />  eol-ayuda@uchile.cl
+                </a>
+                `,
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Oficina de Educación Online, Inc. Built with Docusaurus.`,
+
+        copyright: `Copyright © ${new Date().getFullYear()} Oficina de Educación Online, Vicerrectoría de Tecnologías de la Información, Universidad de Chile. Todos los derechos reservados.`,
       },
       prism: {
         theme: lightCodeTheme,
