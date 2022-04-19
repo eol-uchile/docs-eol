@@ -9,7 +9,7 @@ Este método permite la inscripción de un usuario a un determinado curso, si el
 | Tipo Método       | POST    |
 |-------------------|-------------|
 | URL               | https://norteamericano.virtual-labx.cl/norteamericano_api/api/v0/enroll/|
-| Header            | Authorization: "Bearer ACCESSTOKEN" - Content-Type: "application/json"    |
+| Header            | Authorization: "Bearer ACCESSTOKEN"    |
 |      |  Content-Type: "application/json"    |
 
 ## Body
@@ -62,18 +62,22 @@ Resultado esperado:
 | --------------- | --------- | --------- |
 | result       | String   | ‘success’ |
 
-Resultado no deseado:
+:::tip Resultado esperado:
 
-    status_code = 200
+status_code = 200
+
+:::
 
 | Propiedad |Tipo dato  | Mensaje |
 | --------------- | --------- | --------- |
 | result       | String   | ‘error’ |
 | error       | String   | 'El correo esta asociado a otro RUT' |
 
-Resultado no deseado:
+:::danger Resultado no deseado:
 
-    status_code = 400
+status_code = 400
+
+:::
 
 | Propiedad |Tipo dato  | Mensaje |
 | --------------- | --------- | --------- |

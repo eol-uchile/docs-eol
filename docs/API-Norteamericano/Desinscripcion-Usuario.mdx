@@ -1,0 +1,61 @@
+---
+sidebar_position: 4
+---
+
+# Desinscripción Usuario
+
+Este método permite la desinscripción de un usuario en un determinado curso, si el usuario no existe en la plataforma el método responderá con error.
+
+| Tipo Método       | POST    |
+|-------------------|-------------|
+| URL               | https://norteamericano.virtual-labx.cl/norteamericano_api/api/v0/unenroll/|
+| Header            | Authorization: "Bearer ACCESSTOKEN"    |
+|      |  Content-Type: "application/json"    |
+
+## Body
+
+| Nombre propiedad | Tipo Dato | Uso |
+| ------------- | --------- | --------------------------------------------- |
+| course       | String    | ID del curso |
+| rut       | String    | Rut o Pasaporte del usuario |
+
+```jsx title="Ejemplo consulta python"
+import requests
+import json
+url = "https://norteamericano.virtual-labx.cl/norteamericano_api/api/v0/unenroll/"
+headers = {
+    "Authorization": "Bearer {}".format(access_token),
+    "Content-Type": "application/json"
+}
+body = {"rut":"11111111-1",
+    "course":"course-v1:eol+Test202+2021"
+    }
+r = requests.post(url,data=json.dumps(body),headers=headers)
+data = r.json()
+```
+
+```jsx title="Ejemplo consulta curl"
+curl -X POST https://norteamericano.virtual-labx.cl/norteamericano_api/api/v0/unenroll/ -H 'Content-Type: application/json' -H 'Authorization: Bearer ACCESSTOKEN' -d '{"rut":"11111111-1","course":"course-v1:eol+Test202+2021"}'
+```
+
+
+:::tip Resultado esperado:
+
+status_code = 200
+
+:::
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| result       | String   | ‘success’ |
+
+
+:::danger Resultado no deseado:
+
+status_code = 400
+
+:::
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| rut       | Array   | [“'Rut/Passport is not registered': 1111111-1“]|
