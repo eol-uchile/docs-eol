@@ -1,0 +1,66 @@
+---
+sidebar_position: 2
+---
+
+# Obtener Access Token
+
+## Header
+
+| Propiedad   | Valor propiedad |
+| --------------- | --------- |
+| Cache-Control        | "no-cache"   |
+| Authorization       | "Basic CREDENTIAL"   |                                                                                                                                                                                         |
+| Content-Type        | "application/x-www-form-urlencoded"  |                                                                                                                                                                                                      |
+
+## Body
+
+|  Propiedad | Valor propiedad |
+| --------------- | --------- |
+| grant_type  | "client_credentials"   |                                                                                                                                                                                    |
+
+
+
+```jsx title="Ejemplo consulta python"
+import requests
+CREDENTIAL = ”credencial dada por el equipo de eol”
+headers = {
+    "Cache-Control": "no-cache",
+    "Authorization": "Basic {}".format(CREDENTIAL),
+    "Content-Type": "application/x-www-form-urlencoded"
+}
+body = {
+    "grant_type":"client_credentials"
+}
+r = requests.post(
+    "https://norteamericano.virtual-labx.cl/_o/token/",
+    data=body,
+    headers=headers)
+data = r.json()
+```
+
+```jsx title="Ejemplo consulta curl"
+export CREDENTIAL=credencial dada por el equipo de eol
+curl -X POST -H "Authorization: Basic ${CREDENTIAL}" -H "Cache-Control: no-cache" -H "Content-Type: application/x-www-form-urlencoded" "https://norteamericano.virtual-labx.cl/_o/token/" -d "grant_type=client_credentials"
+
+```
+
+Resultado esperado:
+
+    status_code = 200
+
+
+
+| Propiedad | Tipo Dato | Uso |
+| ------------- | --------- | --------------------------------------------- |
+| 'access_token'       | String    | Token para acceder a la api de norteamericano |
+| 'expires_in'       | Integer    | Duracion del token |
+| 'token_type'       | String    | Tipo del token |
+| 'scope'       | String    | Alcance del token |
+
+Resultado no deseado:
+
+    status_code = 401
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| 'error'       | String   | 'invalid_client' |

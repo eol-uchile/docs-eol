@@ -1,0 +1,80 @@
+---
+sidebar_position: 3
+---
+
+# Inscripción Usuario
+
+Este método permite la inscripción de un usuario a un determinado curso, si el usuario no existe en la plataforma se creará un nuevo usuario. También se le enviará un correo notificando la respectiva inscripción y si el usuario fue creado el correo también incluirá el e-mail y contraseña del usuario.
+
+| Tipo Método       | POST    |
+|-------------------|-------------|
+| URL               | https://norteamericano.virtual-labx.cl/norteamericano_api/api/v0/enroll/|
+| Header            | Authorization: "Bearer ACCESSTOKEN" - Content-Type: "application/json"    |
+|      |  Content-Type: "application/json"    |
+
+## Body
+
+| Nombre propiedad | Tipo Dato | Uso |
+| ------------- | --------- | --------------------------------------------- |
+| course       | String    | ID del curso |
+| birthday       | String    | Fecha de nacimiento del usuario. Formato dd/mm/yyyy |
+| email       | String    | Correo del usuario |
+| lastname_1       | String    | Apellido paterno del usuario |
+| lastname_2       | String    | Apellido materno del usuario |
+| mode       | String    | Tipo de inscripción. (honor, audit) |
+| names       | String    | Nombres del usuario  |
+| phone       | String    | Número telefónico del usuario |
+| rut       | String    | Rut o Pasaporte del usuario  |
+
+```jsx title="Ejemplo consulta python"
+import requests
+import json
+url = "https://norteamericano.virtual-labx.cl/norteamericano_api/api/v0/enroll/"
+headers = {
+    "Authorization": "Bearer {}".format(access_token),
+    "Content-Type": "application/json"
+}
+body = {
+    "email":"correo123@gmail.com",
+    "lastname_1":"Perez",
+    "lastname_2":"Rojas",
+    "names":"Carlos Sergio",
+    "rut":"11111111-1",
+    "birthday":"12/12/2012",
+    "phone":"+56912345678",
+    "course":"course-v1:eol+Test202+2021",
+    "mode":'honor'
+}
+r = requests.post(url,data=json.dumps(body),headers=headers)
+data = r.json()
+
+```
+
+```jsx title="Ejemplo consulta curl"
+curl -X POST https://norteamericano.virtual-labx.cl/norteamericano_api/api/v0/enroll/ -H 'Content-Type: application/json' -H 'Authorization: Bearer ACCESSTOKEN' -d '{"email":"correo123@gmail.com","lastname_1":"Perez","lastname_2":"Rojas","names":"Carlos","rut":"11111111-1","birthday":"12/12/2012","phone":"+56912345678","course":"course-v1:eol+Test202+2021","mode":"honor"}'
+```
+
+Resultado esperado:
+
+    status_code = 200
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| result       | String   | ‘success’ |
+
+Resultado no deseado:
+
+    status_code = 200
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| result       | String   | ‘error’ |
+| error       | String   | 'El correo esta asociado a otro RUT' |
+
+Resultado no deseado:
+
+    status_code = 400
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| rut       | Array   | [“'Rut/Passport invalid': 1111111-1“] |
