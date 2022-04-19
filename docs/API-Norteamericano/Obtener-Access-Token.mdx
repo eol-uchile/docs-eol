@@ -44,10 +44,11 @@ curl -X POST -H "Authorization: Basic ${CREDENTIAL}" -H "Cache-Control: no-cache
 
 ```
 
-Resultado esperado:
+:::tip Resultado esperado:
 
-    status_code = 200
+status_code = 200
 
+:::
 
 
 | Propiedad | Tipo Dato | Uso |
@@ -57,9 +58,11 @@ Resultado esperado:
 | 'token_type'       | String    | Tipo del token |
 | 'scope'       | String    | Alcance del token |
 
-Resultado no deseado:
+:::danger Resultado no deseado:
 
-    status_code = 401
+status_code = 401
+
+:::
 
 | Propiedad |Tipo dato  | Mensaje |
 | --------------- | --------- | --------- |
