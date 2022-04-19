@@ -5,6 +5,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import HomepageFeaturesThird from '@site/src/components/HomepageFeaturesThird';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -30,10 +31,11 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Plataforma de documentación de proyectos oficina eol <head />">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
+        {/* <HomepageFeaturesThird /> */}
       </main>
     </Layout>
   );

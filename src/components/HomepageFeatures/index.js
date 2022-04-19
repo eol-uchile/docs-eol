@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Educación Online para Pregrado y Postgrado',
-    Svg: require('@site/static/img/services_1_1.svg').default,
+    Svg: require('@site/static/img/services_1_1_1.svg').default,
     description: (
       <>
         La Oficina EOL entrega capacitación y acompañamiento a los curso de Pre y Post grado.
@@ -30,20 +30,20 @@ const FeatureList = [
       </>
     ),
   },
-  // {
-  //   title: 'Cursos MOOC',
-  //   Svg: require('@site/static/img/services_1_4.svg').default,
-  //   description: (
-  //     <>
-  //       La Oficina EOL entrega soporte administrativo y técnico a UAbierta, plataforma de cursos abiertos y en línea de la Universidad de Chile.
-  //     </>
-  //   ),
-  // },
+  {
+    title: 'Cursos MOOC',
+    Svg: require('@site/static/img/services_1_4.svg').default,
+    description: (
+      <>
+        La Oficina EOL entrega soporte administrativo y técnico a UAbierta, plataforma de cursos abiertos y en línea de la Universidad de Chile.
+      </>
+    ),
+  },
 ];
 
 function Feature({Svg, title, description}) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx('col col--3')}>
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
@@ -60,7 +60,8 @@ export default function HomepageFeatures() {
     <section className={styles.features}>
       <div className="container">
         <div className="text--center">
-          <h2>Servicios Ofrecidos</h2>
+          <h2 className={styles.services}>Servicios Ofrecidos</h2>
+          <h3 className={styles.servicesContent}>La oficina EOL distribuye su quehacer en 4 líneas de trabajo: educación online para carreras y programas de pregrado y postgrado; educación continua online, proyectos de apoyo a la docencia y cursos MOOC.</h3>
         </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
