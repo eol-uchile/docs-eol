@@ -23,16 +23,27 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: 'docs',
+          // id: 'default',
           sidebarPath: require.resolve('./sidebars.js'),
+          // include: ['**/*.{js,jsx,ts,tsx,md,mdx}'],
+          // exclude: [
+          //   // '**/_*.{js,jsx,ts,tsx,md,mdx}',
+          //   '**/_*/**',
+          //   '**/*.test.{js,jsx,ts,tsx}',
+          //   '**/__tests__/**',
+          // ],
+          // sidebarCollapsible: false,
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/eol-uchile/docs-eol/tree/main',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
+        blog: false,
+        // blog: {
+        //   showReadingTime: true,
+        //   // Please change this to your repo.
+        //   editUrl:
+        //     'https://github.com/eol-uchile/docs-eol/tree/main',
+        // },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -47,14 +58,15 @@ const config = {
         title: '',
         logo: {
           alt: 'Logo EOL',
-          src: 'img/logo-eol.svg',
+          src: 'img/logo-eol-black.png',
+          srcDark: 'img/logo-eol-white.png',
         },
         items: [
           {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Introducción',
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
@@ -67,17 +79,17 @@ const config = {
       footer: {
         style: 'dark',
         logo: {
-          alt: 'Facebook Open Source Logo',
+          alt: 'Logo VTI-EOL',
           src: 'img/logo-eol-white.png',
-          width: 160,
-          height: 80,
+          // width: 160,
+          // height: 80,
         },
         links: [
           {
             title: 'DOCUMENTACIÓN',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Introducción',
                 to: '/docs/intro',
               },
             ],
@@ -110,25 +122,35 @@ const config = {
           {
             title: 'CONTACTO',
             items: [
+              {
+                href: 'https://goo.gl/maps/dBy3bJxzYLDiHgqf7',
+                label: 'Diagonal Paraguay 265, Torre 15, Oficina 1004, Santiago, Chile.',
+                position: 'right',
+              },
+              {
+                href: 'mailto:eol-ayuda@uchile.cl',
+                label: 'eol-ayuda@uchile.cl',
+                position: 'right',
+              },
               // {
               //   label: 'Blog',
               //   to: '/blog',
               // },
-              {
-                html: `
-                <a href="https://goo.gl/maps/dBy3bJxzYLDiHgqf7" target="_blank" rel="noreferrer noopener">
-                  <img src="img/map.png" alt="Maps" width="25" height="25" />  Diagonal Paraguay 265, Torre 15, Oficina 1004, Santiago, Chile.
-                </a>
-              `,
-              },
-              {
-                // label: 'eol-ayuda@uchile.cl',
-                html: `
-                <a href="mailto:eol-ayuda@uchile.cl" target="_blank" rel="noreferrer noopener">
-                  <img src="img/correo-electronico.png" alt="Correo Electronico" width="25" height="25" />  eol-ayuda@uchile.cl
-                </a>
-                `,
-              },
+              // {
+              //   html: `
+              //   <a href="https://goo.gl/maps/dBy3bJxzYLDiHgqf7" target="_blank" rel="noreferrer noopener">
+              //     <img src="/static/img/map.png" alt="Maps" width="25" height="25" />  Diagonal Paraguay 265, Torre 15, Oficina 1004, Santiago, Chile.
+              //   </a>
+              // `,
+              // },
+              // {
+              //   // label: 'eol-ayuda@uchile.cl',
+              //   html: `
+              //   <a href="mailto:eol-ayuda@uchile.cl" target="_blank" rel="noreferrer noopener">
+              //     <img src="/static/img/correo-electronico.png" alt="Correo Electronico" width="25" height="25" />  eol-ayuda@uchile.cl
+              //   </a>
+              //   `,
+              // },
             ],
           },
         ],
