@@ -1,0 +1,73 @@
+---
+sidebar_position: 5
+---
+
+# Cursos en proceso de relanzamiento
+
+Este método permite obtener un listado de cursos que están en curso a relanzarse/clonarse.
+
+| Tipo Método       | GET    |
+|-------------------|-------------|
+| URL               | https://studio.norteamericano.virtual-labx.cl/norteamericano_api/api/v0/pending-courses/|
+| Header            | Authorization: "Bearer ACCESSTOKEN"    |
+|      |  Content-Type: "application/json"    |
+
+## Body
+
+| Nombre propiedad | Tipo Dato | Uso |
+| ------------- | --------- | --------------------------------------------- |
+| course       | String    | ‘course_id’: obtiene el status de un curso específico |
+|     |   | ‘all’: obtiene todos los cursos en proceso de relanzamiento |
+
+### Ejemplo consulta python
+```jsx title=
+import requests
+import json
+url = "https://studio.norteamericano.virtual-labx.cl/norteamericano_api/api/v0/pending-courses/"
+headers = {
+    "Authorization": "Bearer {}".format(access_token),
+    "Content-Type": "application/json"
+}
+body = {
+    "course":"course-v1:eol+Test202+2021"
+ }
+r = requests.post(url,data=json.dumps(body),headers=headers)
+data = r.json()
+
+```
+### Ejemplo consulta curl
+```jsx title=
+curl -X GET https://studio.norteamericano.virtual-labx.cl/norteamericano_api/api/v0/pending-courses/ -H 'Content-Type: application/json' -H 'Authorization: Bearer ACCESSTOKEN' -d '{"course":"course-v1:eol+Test202+2021"}'
+```
+
+:::tip Resultado esperado:
+
+status_code = 200
+
+:::
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| result       | String   | ‘success’ |
+| courses_status | Array   | Respuesta 👇 |
+
+```json
+Resultado status = 200 propiedad courses_status:
+[{
+"new_course_id":"Id del nuevo curso",
+"origen_course_id": "Id del curso de origen",
+"display_name": "Nombre del nuevo curso",
+"state": "Estado del proceso de relanzamiento del nuevo curso",
+"new_course_url": "URL del nuevo curso (Si el estado es distinto a SUCCESS la URL no funcionará)"
+}]
+```
+
+:::danger Resultado no deseado:
+
+status_code = 400
+
+:::
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| course       | Array   | [“Course key not valid or dont exists: course-v1:eol+Test202+2021“] |
