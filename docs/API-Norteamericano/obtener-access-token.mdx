@@ -19,8 +19,8 @@ sidebar_position: 2
 | grant_type  | "client_credentials"   |                                                                                                                                                                                    |
 
 
-
-```jsx title="Ejemplo consulta python"
+### Ejemplo consulta python
+```jsx title=
 import requests
 CREDENTIAL = ”credencial dada por el equipo de eol”
 headers = {
@@ -37,8 +37,8 @@ r = requests.post(
     headers=headers)
 data = r.json()
 ```
-
-```jsx title="Ejemplo consulta curl"
+### Ejemplo consulta curl
+```jsx title=
 export CREDENTIAL=credencial dada por el equipo de eol
 curl -X POST -H "Authorization: Basic ${CREDENTIAL}" -H "Cache-Control: no-cache" -H "Content-Type: application/x-www-form-urlencoded" "https://norteamericano.virtual-labx.cl/_o/token/" -d "grant_type=client_credentials"
 

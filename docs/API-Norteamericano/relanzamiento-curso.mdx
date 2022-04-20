@@ -1,0 +1,83 @@
+---
+sidebar_position: 6
+---
+
+# Relanzamiento de Curso
+
+Este método permite relanzar o clonar un curso.
+
+| Tipo Método | POST |
+| --------------- | --------- |
+| URL        | https://studio.norteamericano.virtual-labx.cl/norteamericano_api/api/v0/rerun/   |
+| Header       | Authorization: "Bearer ACCESSTOKEN"  |
+|        | Content-Type: "application/json"  |
+
+## Body
+
+| Propiedad | Tipo Dato | Uso |
+| ------------- | --------- | --------------------------------------------- |
+| source_course       | String    | Id del curso de origen |
+| new_course       | Integer    | Id que tendrá el nuevo curso |
+| display_name       | String    | Nombre del nuevo curso |
+| start_date       | String    | Fecha de inicio del nuevo curso, debe estar en UTC. Formato “hh:mm dd/mm/yyyy” |
+| end_date      | String    | Fecha de término del nuevo curso, debe estar en UTC. Formato “hh:mm dd/mm/yyyy” |
+
+### Ejemplo consulta python
+
+```jsx title=
+import requests
+import json
+url = "https://studio.norteamericano.virtual-labx.cl/norteamericano_api/api/v0/rerun/"
+headers = {
+    "Authorization": "Bearer {}".format(access_token),
+    "Content-Type": "application/json"
+}
+body = {
+    "source_course":"course-v1:eol+Test202+2021",
+    "new_course":"course-v1:eol+Test335+2023",
+    "display_name":"Test Api rerun",
+    "start_date":"00:00 01/01/2023",
+    "end_date":"00:00 20/02/2023",
+}
+r = requests.post(url,data=json.dumps(body),headers=headers)
+data = r.json()
+```
+### Ejemplo consulta curl
+```jsx title=
+curl -X POST https://studio.norteamericano.virtual-labx.cl/norteamericano_api/api/v0/rerun/ -H 'Content-Type: application/json' -H 'Authorization: Bearer ACCESSTOKEN' -d '{"source_course":"course-v1:eol+Test202+2021","new_course":"course-v1:eol+Test335+2023","display_name":"Test Api rerun","start_date":"00:00 01/01/2023","end_date":"00:00 20/02/2023"}'
+```
+
+:::tip Resultado esperado:
+
+status_code = 200
+
+:::
+
+
+| Propiedad | Tipo Dato | Uso |
+| ------------- | --------- | --------------------------------------------- |
+| result       | String    | ‘success’ |
+| new_course_url       | String    | URL del nuevo curso (Si el estado es distinto a SUCCESS la URL no funcionará|
+| status       |     | Procesandose |
+
+:::danger Resultado no deseado:
+
+status_code = 200
+
+:::
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| result       | String   | ‘error’ |
+| new_course_url     | String   | " " |
+| status       |    | Error en relanzar el curso |
+
+:::danger Resultado no deseado:
+
+status_code = 400
+
+:::
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| new_course       | Array   | [“New Course key already exists: course-v1:eol+Test335+2023“]’ |

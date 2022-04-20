@@ -26,7 +26,8 @@ Este método permite la inscripción de un usuario a un determinado curso, si el
 | phone       | String    | Número telefónico del usuario |
 | rut       | String    | Rut o Pasaporte del usuario  |
 
-```jsx title="Ejemplo consulta python"
+### Ejemplo consulta python
+```jsx title=
 import requests
 import json
 url = "https://norteamericano.virtual-labx.cl/norteamericano_api/api/v0/enroll/"
@@ -50,7 +51,8 @@ data = r.json()
 
 ```
 
-```jsx title="Ejemplo consulta curl"
+### Ejemplo consulta curl
+```jsx title=
 curl -X POST https://norteamericano.virtual-labx.cl/norteamericano_api/api/v0/enroll/ -H 'Content-Type: application/json' -H 'Authorization: Bearer ACCESSTOKEN' -d '{"email":"correo123@gmail.com","lastname_1":"Perez","lastname_2":"Rojas","names":"Carlos","rut":"11111111-1","birthday":"12/12/2012","phone":"+56912345678","course":"course-v1:eol+Test202+2021","mode":"honor"}'
 ```
 
