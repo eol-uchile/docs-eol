@@ -95,23 +95,6 @@ const config = {
             ],
           },
           {
-            title: 'RRSS VTI',
-            items: [
-              {
-                label: 'Instagram',
-                href: 'https://www.instagram.com/vti_uchile/',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/vti_uchile',
-              },
-              {
-                label: 'LinkedIn',
-                href: 'https://www.linkedin.com/company/vti-uchile/',
-              },
-            ],
-          },
-          {
             title: 'PLATAFORMAS',
             items: [
               {
