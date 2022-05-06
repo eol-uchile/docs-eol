@@ -24,7 +24,6 @@ const config = {
       ({
         docs: {
           routeBasePath:'/',
-          path: 'docs',
           // id: 'default',
           sidebarPath: require.resolve('./sidebars.js'),
           // include: ['**/*.{js,jsx,ts,tsx,md,mdx}'],
