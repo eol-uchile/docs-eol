@@ -63,7 +63,7 @@ const config = {
         },
         items: [
           {
-            to:'/intro',
+            to:'docs/intro',
             position: 'left',
             label: 'Introducción',
           },
@@ -114,7 +114,7 @@ const config = {
             items: [
               {
                 label: 'Introducción',
-                to: '/intro',
+                to: 'docs/intro',
               },
             ],
           },
