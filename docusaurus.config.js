@@ -23,7 +23,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          path: 'docs',
+          routeBasePath:'/',
           // id: 'default',
           sidebarPath: require.resolve('./sidebars.js'),
           // include: ['**/*.{js,jsx,ts,tsx,md,mdx}'],
@@ -63,10 +63,34 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
+            to:'docs/intro',
             position: 'left',
             label: 'Introducción',
+          },
+          {
+            to: 'norteamericano/intro',
+            label: 'Norteamericano',
+            position: 'left',
+          },
+          {
+            to: 'eol/intro',
+            label: 'EOL',
+            position: 'left',
+          },
+          {
+            to: 'uabierta/intro',
+            label: 'UAbierta',
+            position: 'left',
+          },
+          {
+            to: 'VirtualLabX/intro',
+            label: 'VirtualLabX',
+            position: 'left',
+          },
+          {
+            to: 'cmm/intro',
+            label: 'EduFormación',
+            position: 'left',
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
@@ -90,7 +114,7 @@ const config = {
             items: [
               {
                 label: 'Introducción',
-                to: '/docs/intro',
+                to: 'docs/intro',
               },
             ],
           },
