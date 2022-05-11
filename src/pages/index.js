@@ -5,7 +5,6 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import HomepageFeaturesThird from '@site/src/components/HomepageFeaturesThird';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -18,7 +17,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Documentación Proyectos EOL ⏱️
+            Documentación de proyectos EOL ⏱️
           </Link>
         </div>
       </div>
@@ -31,11 +30,10 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Plataforma de documentación de proyectos oficina eol <head />">
+      description="Plataforma de documentación de proyectos oficina EOL <head />">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
-        {/* <HomepageFeaturesThird /> */}
       </main>
     </Layout>
   );

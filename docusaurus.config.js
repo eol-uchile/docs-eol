@@ -62,19 +62,19 @@ const config = {
           srcDark: 'img/logo-eol-white.png',
         },
         items: [
+          // {
+          //   to:'docs/intro',
+          //   position: 'left',
+          //   label: 'Introducción',
+          // },
           {
-            to:'docs/intro',
+            to: 'eol/intro',
+            label: 'EOL',
             position: 'left',
-            label: 'Introducción',
           },
           {
             to: 'norteamericano/intro',
             label: 'Norteamericano',
-            position: 'left',
-          },
-          {
-            to: 'eol/intro',
-            label: 'EOL',
             position: 'left',
           },
           {
@@ -89,7 +89,7 @@ const config = {
           },
           {
             to: 'cmm/intro',
-            label: 'EduFormación',
+            label: 'CMM EduFormación',
             position: 'left',
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
@@ -109,15 +109,15 @@ const config = {
           // height: 80,
         },
         links: [
-          {
-            title: 'DOCUMENTACIÓN',
-            items: [
-              {
-                label: 'Introducción',
-                to: 'docs/intro',
-              },
-            ],
-          },
+          // {
+          //   title: 'DOCUMENTACIÓN',
+          //   items: [
+          //     {
+          //       label: 'Introducción',
+          //       to: 'docs/intro',
+          //     },
+          //   ],
+          // },
           {
             title: 'PLATAFORMAS',
             items: [
