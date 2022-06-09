@@ -32,7 +32,13 @@ const sidebars = {
       'VirtualLabX': ['VirtualLabX/intro',]
     },
     SidebarCMM: {
-      'CMM Eduformación': ['CMM-Edu/intro',]
+      'CMM Eduformación': ['CMM-Edu/intro',
+      'CMM-Edu/obtener-access-token',
+      'CMM-Edu/reporte-perfil-estudiante',
+      'CMM-Edu/reporte-ora2',
+      'CMM-Edu/reporte-problema',
+      'CMM-Edu/reporte-roles-usuario',
+      'CMM-Edu/lista-tareas']
     }
 
   // By default, Docusaurus generates a sidebar from the docs folder structure

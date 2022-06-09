@@ -1,2 +1,1 @@
 status = ["build"]
-delete-merged-branches = true

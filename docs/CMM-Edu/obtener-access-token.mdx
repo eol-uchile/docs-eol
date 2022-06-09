@@ -1,0 +1,88 @@
+---
+slug: /cmm/obtener-access-token
+sidebar_position: 2
+displayed_sidebar: SidebarCMM
+---
+import Admonition from '@theme/Admonition';
+
+
+# Obtener Access Token
+
+Para obtener el Access Token se debe hacer una consulta tipo POST a la URL:
+**https://cmmeduformacion.uchile.cl/_o/token/** con una credencial dada previamente por el equipo eol.
+
+## Header
+
+| Propiedad   | Valor propiedad |
+| --------------- | --------- |
+| Cache-Control        | "no-cache"   |
+| Authorization       | "Basic CREDENTIAL"   |                                                                                                                                                                                         |
+| Content-Type        | "application/x-www-form-urlencoded"  |                                                                                                                                                                                                      |
+
+## Body
+
+|  Propiedad | Valor propiedad |
+| --------------- | --------- |
+| grant_type  | "client_credentials"   |
+
+<br/>
+
+### Ejemplo consulta python
+```jsx title=
+import requests
+CREDENTIAL = ”credencial dada por el equipo de eol”
+headers = {
+    "Cache-Control": "no-cache",
+    "Authorization": "Basic {}".format(CREDENTIAL),
+    "Content-Type": "application/x-www-form-urlencoded"
+}
+body = {
+    "grant_type":"client_credentials"
+}
+r = requests.post(
+    "https://cmmeduformacion.uchile.cl/_o/token/",
+    data=body,
+    headers=headers)
+data = r.json()
+```
+
+<br/>
+
+### Ejemplo consulta curl
+```jsx title=
+export CREDENTIAL= ”credencial dada por el equipo de eol”
+curl -X POST -H "Authorization: Basic ${CREDENTIAL}" -H "Cache-Control: no-cache" -H "Content-Type: application/x-www-form-urlencoded" "https://cmmeduformacion.uchile.cl/_o/token/" -d "grant_type=client_credentials"
+```
+<br/>
+
+## Resultado de Access Token
+
+<br/>
+<Admonition type="tip" icon="💡" title="Resultado esperado:">
+  <p>
+    status_code = 200
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad | Tipo Dato | Uso |
+| ------------- | --------- | --------------------------------------------- |
+| 'access_token'       | String    | Token para acceder a la API de CMM |
+| 'expires_in'       | Integer    | Duracion del token |
+| 'token_type'       | String    | Tipo del token |
+| 'scope'       | String    | Alcance del token |
+
+<br/>
+<br/>
+<Admonition type="danger" icon="🔥" title="Resultado no deseado:">
+  <p>
+    status_code = 401
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| 'error'       | String   | 'invalid_client' |

@@ -1,0 +1,93 @@
+---
+slug: /cmm/reporte-problema
+sidebar_position: 4
+displayed_sidebar: SidebarCMM
+---
+import Admonition from '@theme/Admonition';
+
+# Reporte de Problema
+
+Este método permite generar un reporte en csv con las respuestas de los estudiantes dado el block-id de este o las respuestas a todos los problemas contenido el block-id de una sección/subsección/unidad.
+
+** Ratio de Consultas: 1/minuto **
+
+## Header
+
+| Tipo Método       | POST    |
+|-------------------|-------------|
+| URL               | https://cmmeduformacion.uchile.cl/cmm_api/problem-report/|
+| Header            | Authorization: "Bearer ACCESSTOKEN"    |
+|      |  Content-Type: "application/json"    |
+
+## Body
+
+| Propiedad | Tipo Dato | Uso |
+| ------------- | --------- | --------------------------------------------- |
+| block_id       | String    | Id del problema o sección/subsección/unidad |
+
+<br/>
+
+
+### Ejemplo consulta python
+```jsx title=
+import requests
+import json
+url = "https://cmmeduformacion.uchile.cl/cmm_api/problem-report/"
+headers = {
+    "Authorization": "Bearer {}".format(access_token),
+    "Content-Type": "application/json"
+}
+body = { "block_id":"block-v1:eol+test100+2021_1+type@vertical+block@4e311cbf9df0465b837a177ba8c5e64b"}
+r = requests.post(url,data=json.dumps(body),headers=headers)
+data = r.json()
+```
+<br/>
+
+### Ejemplo consulta curl
+```jsx title=
+curl -X POST https://cmmeduformacion.uchile.cl/cmm_api/problem-report/ -H 'Content-Type: application/json' -H 'Authorization: Bearer ACCESSTOKEN' -d '{"block_id":"block-v1:eol+test100+2021_1+type@vertical+block@4e311cbf9df0465b837a177ba8c5e64b"}'
+```
+<br/>
+
+## Resultado de reporte de problemas
+
+<br/>
+<Admonition type="tip" icon="💡" title="Resultado esperado:">
+  <p>
+    status_code = 200
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad | Tipo Dato | Mensaje |
+| ------------- | --------- | --------------------------------------------- |
+| status       | String    | 'El reporte Problem Responses está siendo creado.' |
+| task_id       | String    | '1111111111-11111111111-11111111111-111111111'|
+
+<br/>
+<Admonition type="tip" icon="💡" title="Resultado esperado:">
+  <p>
+    status_code = 200
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad | Tipo Dato | Mensaje |
+| ------------- | --------- | -----------------------|
+| status       | String    | 'Already Running Task'. |
+
+
+<br/>
+<Admonition type="danger" icon="🔥" title="Resultado no deseado:">
+  <p>
+    status_code = 400
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| block_id       | Array   | [“Block key not valid or dont exists: block-v1:eol+test100+2021_1+type@vertical+block@4e311cbf9df0465b837a177ba8c5e64b“]|

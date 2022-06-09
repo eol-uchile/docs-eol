@@ -1,0 +1,83 @@
+---
+slug: /cmm/lista-tareas
+sidebar_position: 4
+displayed_sidebar: SidebarCMM
+---
+import Admonition from '@theme/Admonition';
+
+# Lista de Tareas
+
+Este método obtiene una lista con todas las tareas de los reportes que se han solicitados por la API.
+
+
+## Header
+
+| Tipo Método       | GET    |
+|-------------------|-------------|
+| URL               | https://cmmeduformacion.uchile.cl/cmm_api/get-all-task/|
+| Header            | Authorization: "Bearer ACCESSTOKEN"    |
+|      |  Content-Type: "application/json"    |
+
+## Body
+
+| Propiedad | Tipo Dato | Uso |
+| ------------- | --------- | --------------------------------------------- |
+| course_id       | String    | Id del curso|
+
+<br/>
+
+
+### Ejemplo consulta python
+```jsx title=
+import requests
+import json
+url = "https://cmmeduformacion.uchile.cl/cmm_api/get-all-task/"
+headers = {
+    "Authorization": "Bearer {}".format(access_token),
+    "Content-Type": "application/json"
+}
+body = { "course_id":"course-v1:eol+Test202+2021"}
+r = requests.get(url,data=json.dumps(body),headers=headers)
+data = r.json()
+```
+<br/>
+
+### Ejemplo consulta curl
+```jsx title=
+curl -X GET https://cmmeduformacion.uchile.cl/cmm_api/get-all-task/ -H 'Content-Type: application/json' -H 'Authorization: Bearer ACCESSTOKEN' -d '{"course_id":"course-v1:eol+Test202+2021"}'
+```
+<br/>
+
+## Resultado lista de tareas
+
+<br/>
+<Admonition type="tip" icon="💡" title="Resultado esperado:">
+  <p>
+    status_code = 200
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad | Tipo Dato | Uso |
+| ------------- | --------- | --------------------------------------------- |
+| list_task       | Array    | Lista de diccionarios con información sobre el status, id, url de las tareas/reportes solicitados |
+| task_type       | String    | Tipo del reporte|
+| task_id       | String    | Id del reporte|
+| task_state       | String    | Estado del reporte|
+| task_output       | Json    | Información sobre el reporte|
+| url       | String    | Si el reporte fue generado correctamente, tendrá este campo  disponible.|
+
+
+<br/>
+<Admonition type="danger" icon="🔥" title="Resultado no deseado:">
+  <p>
+    status_code = 400
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| course_id       | Array   | [“Course key not valid or dont exists: course-v1:eol+Test202+2021“]|
