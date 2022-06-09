@@ -1,0 +1,107 @@
+---
+slug: /cmm/reporte-perfil-estudiante
+sidebar_position: 2
+displayed_sidebar: SidebarCMM
+---
+import Admonition from '@theme/Admonition';
+
+# Reporte Perfil de Estudiantes
+
+Este método permite generar un reporte en csv con la información de los estudiantes inscritos en el curso dado.
+
+** Ratio de Consultas: 1/minuto **
+
+## Header
+
+| Tipo Método       | POST    |
+|-------------------|-------------|
+| URL               | https://cmmeduformacion.uchile.cl/cmm_api/student-profile/|
+| Header            | Authorization: "Bearer ACCESSTOKEN"    |
+|      |  Content-Type: "application/json"    |
+
+## Body
+
+| Propiedad | Tipo Dato | Uso |
+| ------------- | --------- | --------------------------------------------- |
+| course_id       | String    | Id del curso |
+
+<br/>
+
+
+### Ejemplo consulta python
+```jsx title=
+import requests
+import json
+url = "https://cmmeduformacion.uchile.cl/cmm_api/student-profile/"
+headers = {
+    "Authorization": "Bearer {}".format(access_token),
+    "Content-Type": "application/json"
+}
+body = { "course_id":"course-v1:eol+Test202+2021"}
+r = requests.post(url,data=json.dumps(body),headers=headers)
+data = r.json()
+
+```
+<br/>
+
+### Ejemplo consulta curl
+```jsx title=
+curl -X POST https://cmmeduformacion.uchile.cl/cmm_api/student-profile/ -H 'Content-Type: application/json' -H 'Authorization: Bearer ACCESSTOKEN' -d '{"course_id":"course-v1:eol+Test202+2021"}'
+```
+<br/>
+
+## Resultado de reporte perfil estudiante
+
+<br/>
+<Admonition type="tip" icon="💡" title="Resultado esperado:">
+  <p>
+    status_code = 200
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad | Tipo Dato | Mensaje |
+| ------------- | --------- | --------------------------------------------- |
+| status       | String    | 'El reporte Perfil de estudiantes está siendo creado.' |
+| task_id       | String    | '1111111111-11111111111-11111111111-111111111'|
+
+<br/>
+<Admonition type="tip" icon="💡" title="Resultado esperado:">
+  <p>
+    status_code = 200
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad | Tipo Dato | Mensaje |
+| ------------- | --------- | -----------------------|
+| status       | String    | 'Already Running Task'. |
+
+<br/>
+<Admonition type="danger" icon="🔥" title="Resultado no deseado:">
+  <p>
+    status_code = 429
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| detail       | String   | 'Solicitud fue regulada (throttled). Expected available in 58 seconds.' |
+
+
+<br/>
+<Admonition type="danger" icon="🔥" title="Resultado no deseado:">
+  <p>
+    status_code = 400
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| course_id       | Array   | [“Course key not valid or dont exists: course-v1:eol+Test202+2021“] |

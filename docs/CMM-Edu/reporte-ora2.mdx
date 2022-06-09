@@ -1,0 +1,106 @@
+---
+slug: /cmm/reporte-ora2
+sidebar_position: 3
+displayed_sidebar: SidebarCMM
+---
+import Admonition from '@theme/Admonition';
+
+# Reporte ORA2
+
+Este método permite generar un reporte en csv con las respuestas de los estudiantes al componente ORA2 del curso dado.
+
+** Ratio de Consultas: 1/minuto **
+
+## Header
+
+| Tipo Método       | POST    |
+|-------------------|-------------|
+| URL               | https://cmmeduformacion.uchile.cl/cmm_api/ora2-report/|
+| Header            | Authorization: "Bearer ACCESSTOKEN"    |
+|      |  Content-Type: "application/json"    |
+
+## Body
+
+| Propiedad | Tipo Dato | Uso |
+| ------------- | --------- | --------------------------------------------- |
+| course_id       | String    | Id del curso |
+
+<br/>
+
+
+### Ejemplo consulta python
+```jsx title=
+import requests
+import json
+url = "https://cmmeduformacion.uchile.cl/cmm_api/ora2-report/"
+headers = {
+    "Authorization": "Bearer {}".format(access_token),
+    "Content-Type": "application/json"
+}
+body = { "course_id":"course-v1:eol+Test202+2021"}
+r = requests.post(url,data=json.dumps(body),headers=headers)
+data = r.json()
+```
+<br/>
+
+### Ejemplo consulta curl
+```jsx title=
+curl -X POST https://cmmeduformacion.uchile.cl/cmm_api/ora2-report/ -H 'Content-Type: application/json' -H 'Authorization: Bearer ACCESSTOKEN' -d '{"course_id":"course-v1:eol+Test202+2021"}'
+```
+<br/>
+
+## Resultado de reporte ORA2
+
+<br/>
+<Admonition type="tip" icon="💡" title="Resultado esperado:">
+  <p>
+    status_code = 200
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad | Tipo Dato | Mensaje |
+| ------------- | --------- | --------------------------------------------- |
+| status       | String    | 'El reporte ORA2 está siendo creado.' |
+| task_id       | String    | '1111111111-11111111111-11111111111-111111111'|
+
+<br/>
+<Admonition type="tip" icon="💡" title="Resultado esperado:">
+  <p>
+    status_code = 200
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad | Tipo Dato | Mensaje |
+| ------------- | --------- | -----------------------|
+| status       | String    | 'Already Running Task'. |
+
+<br/>
+<Admonition type="danger" icon="🔥" title="Resultado no deseado:">
+  <p>
+    status_code = 429
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| detail       | String   | 'Solicitud fue regulada (throttled). Expected available in 58 seconds.' |
+
+
+<br/>
+<Admonition type="danger" icon="🔥" title="Resultado no deseado:">
+  <p>
+    status_code = 400
+  </p>
+</Admonition>
+<br/>
+
+
+| Propiedad |Tipo dato  | Mensaje |
+| --------------- | --------- | --------- |
+| course_id       | Array   | [“Course key not valid or dont exists: course-v1:eol+Test202+2021“] |
