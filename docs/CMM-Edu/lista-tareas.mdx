@@ -12,8 +12,9 @@ Este método obtiene una lista con todas las tareas de los reportes que se han s
 
 ## Header
 
-| Tipo Método       | GET    |
+|    Propiedad    |    Data |
 |-------------------|-------------|
+| Tipo Método       | GET    |
 | URL               | https://cmmeduformacion.uchile.cl/cmm_api/get-all-task/|
 | Header            | Authorization: "Bearer ACCESSTOKEN"    |
 |      |  Content-Type: "application/json"    |
@@ -62,6 +63,11 @@ curl -X GET https://cmmeduformacion.uchile.cl/cmm_api/get-all-task/ -H 'Content-
 | Propiedad | Tipo Dato | Uso |
 | ------------- | --------- | --------------------------------------------- |
 | list_task       | Array    | Lista de diccionarios con información sobre el status, id, url de las tareas/reportes solicitados |
+
+
+### List Task
+| Propiedad | Tipo Dato | Uso |
+| ------------- | --------- | --------------------------------------------- |
 | task_type       | String    | Tipo del reporte|
 | task_id       | String    | Id del reporte|
 | task_state       | String    | Estado del reporte|
