@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Oficina de Educación Online',
-  tagline: 'Oficina de Educación Online',
+  tagline: 'Plataforma de documentación EOL',
   url: 'https://docs.oficinaeol.uchile.cl',
   baseUrl: '/',
   trailingSlash: false,
@@ -124,6 +124,10 @@ const config = {
               {
                 label: 'Educación Online (EOL)',
                 href: 'https://eol.uchile.cl/',
+              },
+              {
+                label: 'Norteamericano',
+                href: 'https://norteamericano.virtual-labx.cl/'
               },
               {
                 label: 'CMM Edu Formación',
