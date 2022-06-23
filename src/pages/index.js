@@ -17,7 +17,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Documentación de proyectos EOL ⏱️
+            Pagina en proceso de construcción ⏱️
           </Link>
         </div>
       </div>
@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Plataforma de documentación de proyectos oficina EOL <head />">
+      description="Plataforma de documentación de proyectos oficina EOL Universidad de Chile <head />">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
