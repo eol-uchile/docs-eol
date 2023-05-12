@@ -1,0 +1,8 @@
+pull_request_rules:
+  - name: automatic merge for main when CI passes.
+    conditions:
+      - base=main
+      - status-success=github-actions/docker.yml
+    actions:
+      merge:
+        method: merge
