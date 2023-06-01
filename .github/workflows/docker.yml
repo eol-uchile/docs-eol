@@ -25,3 +25,10 @@ jobs:
     - name: Push to Github Container Registry
       run: |
         docker push ghcr.io/eol-uchile/docs-eol:${GITHUB_SHA}
+
+    - name: Set Docker Build Success Status
+      id: set-status
+      run: echo "::set-output name=status::docker-build-success"
+
+    - name: Output Status
+      run: echo "${{ steps.set-status.outputs.status }}"
