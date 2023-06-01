@@ -2,7 +2,7 @@ pull_request_rules:
   - name: Continuous integration with Bors-like strategy
     conditions:
       - status-success=docker-build-success
-      - base=master
+      - base=main
     actions:
       merge:
         method: merge
