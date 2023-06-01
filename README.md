@@ -1,4 +1,4 @@
-Repository for documentation of eol projects.
+Repository for documentation of eol projects
 
 # Docs EOL
 
