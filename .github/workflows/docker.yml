@@ -26,5 +26,9 @@ jobs:
         git config user.email "actions@github.com"
         git checkout -b update-image-${GITHUB_SHA}
         git add .  # Asegúrate de agregar todos los cambios relevantes
-        git commit -m "Update Docker image"
-        git push origin update-image-${GITHUB_SHA}
+        if ! git diff-index --quiet HEAD --; then
+          git commit -m "Update Docker image"
+          git push origin update-image-${GITHUB_SHA}
+        else
+          echo "No changes to commit or push."
+        fi
