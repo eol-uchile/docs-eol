@@ -3,7 +3,7 @@ name: Docker Image CI
 on:
   push:
     branches:
-      - main
+      - '*'
 
 jobs:
   build:
@@ -13,8 +13,8 @@ jobs:
     - uses: actions/checkout@main
 
     - name: Build the Docker image
-      if: github.ref == 'refs/heads/main'
-      run: docker build . --file ./Dockerfile --tag ghcr.io/eol-uchile/docs-eol:${GITHUB_SHA}
+      run: |
+        docker build . --file ./Dockerfile --tag ghcr.io/eol-uchile/docs-eol:${GITHUB_SHA}
 
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v1
@@ -26,3 +26,14 @@ jobs:
     - name: Push to Github Container Registry
       run: |
         docker push ghcr.io/eol-uchile/docs-eol:${GITHUB_SHA}
+
+
+    - name: Create or update PR to main
+      if: github.ref != 'refs/heads/main'  # Evitar crear PRs desde la rama main
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git checkout -b update-image-${GITHUB_SHA}
+        git add .  # Asegúrate de agregar todos los cambios relevantes
+        git commit -m "Update Docker image"
+        git push origin update-image-${GITHUB_SHA}
