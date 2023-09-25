@@ -1,5 +1,5 @@
 pull_request_rules:
-  - name: Continuous integration with Bors-like strategy
+  - name: Build and Merge Docker Image
     conditions:
       - check-success=build
       - base=main

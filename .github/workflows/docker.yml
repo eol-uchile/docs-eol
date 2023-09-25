@@ -3,7 +3,7 @@ name: Docker Image CI
 on:
   push:
     branches:
-      - '*'
+      - main
 
 jobs:
   build:
@@ -18,14 +18,15 @@ jobs:
         docker login ghcr.io -u eolito -p ${{ secrets.CR_PAT }}
         docker push ghcr.io/eol-uchile/docs-eol:${GITHUB_SHA}
 
-
     - name: Create or update PR to main
-      if: github.ref != 'refs/heads/main'  # Evitar crear PRs desde la rama main
+      if: github.ref != 'refs/heads/main'
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git checkout -b update-image-${GITHUB_SHA}
-        git add .  # Asegúrate de agregar todos los cambios relevantes
+        git add .
+
+        # Verificar si hay cambios para evitar PRs vacíos
         if ! git diff-index --quiet HEAD --; then
           git commit -m "Update Docker image"
           git push origin update-image-${GITHUB_SHA}
