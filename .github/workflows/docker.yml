@@ -1,9 +1,11 @@
 name: Docker Image CI
 
 on:
-  pull_request:
-    types:
-      - synchronize
+  push:
+    branches:
+      - 'main'
+  merge_group:
+
 
 jobs:
   build:
@@ -12,24 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@main
 
-    - name: Build the Docker image
+    - name: Build the Docker image and Push to Github Container Registry
       run: |
         docker build . --file ./Dockerfile --tag ghcr.io/eol-uchile/docs-eol:${GITHUB_SHA}
-        docker login ghcr.io -u eolito -p ${{ secrets.CR_PAT }}
+        docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
         docker push ghcr.io/eol-uchile/docs-eol:${GITHUB_SHA}
-
-    - name: Create or update PR to main
-      if: github.ref != 'refs/heads/main'
-      run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
-        git checkout -b update-image-${GITHUB_SHA}
-        git add .
-
-        # Verificar si hay cambios para evitar PRs vacíos
-        if ! git diff-index --quiet HEAD --; then
-          git commit -m "Update Docker image"
-          git push origin update-image-${GITHUB_SHA}
-        else
-          echo "No changes to commit or push."
-        fi
