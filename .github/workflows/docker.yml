@@ -1,10 +1,11 @@
 name: Docker Image CI
 
 on:
-  push:
+  pull_request:
     branches:
       - 'main'
   merge_group:
+    types: [checks_requested]
 
 
 jobs:
@@ -15,6 +16,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@main
+
+    - name: Check out the PR branch
+      if: github.event_name == 'pull_request'
+      run: |
+        git fetch origin pull/${{ github.event.pull_request.number }}/head:pr-${{ github.event.pull_request.number }}
+        git checkout pr-${{ github.event.pull_request.number }}
 
     - name: Build the Docker image and Push to Github Container Registry
       run: |
