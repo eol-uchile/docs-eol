@@ -19,7 +19,9 @@ jobs:
 
     - name: Check out the PR branch
       if: github.event_name == 'pull_request'
-      run: git checkout -B ${{ github.event.pull_request.head.ref }} ${{ github.event.pull_request.head.sha }}
+      run: |
+        git fetch origin pull/${{ github.event.pull_request.number }}/head:pr-${{ github.event.pull_request.number }}
+        git checkout pr-${{ github.event.pull_request.number }}
 
     - name: Build the Docker image and Push to Github Container Registry
       run: |
